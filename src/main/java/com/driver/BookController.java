@@ -51,10 +51,10 @@ public class BookController {
     public ResponseEntity createBook(@RequestBody Book book){
         // Your code goes here.
         if(bookList.contains(book)){
-          return new ResponseEntity(book, HttpStatus.ALREADY_REPORTED);
+          return new ResponseEntity(book.getName(), HttpStatus.ALREADY_REPORTED);
         }
         bookList.add(book);
-        return new ResponseEntity(book, HttpStatus.CREATED);
+        return new ResponseEntity(book.getName(), HttpStatus.CREATED);
     }
 
     // get request /get-book-by-id/{id}
