@@ -64,11 +64,11 @@ public class BookController {
     @GetMapping("/get-book-by-id/{id}")
     public ResponseEntity getBookById(@PathVariable int id){
         if(bookList.contains(id) && id !=0){
-            return new ResponseEntity(bookList.get(id), Objects.requireNonNull(HttpStatus.ALREADY_REPORTED));
+            return new ResponseEntity(bookList.get(id).getName(), Objects.requireNonNull(HttpStatus.ALREADY_REPORTED));
 
         }
 
-        return new ResponseEntity(bookList.get(id), HttpStatus.NOT_FOUND);
+        return new ResponseEntity(bookList.get(id).getName(), HttpStatus.NOT_FOUND);
 
 
     }
@@ -82,12 +82,12 @@ public class BookController {
 
         if(bookList.contains(id) && id !=0){
             bookList.remove(id);
-           return  new ResponseEntity(bookList.get(id), HttpStatus.GONE);
+           return  new ResponseEntity(bookList.get(id).getName(), HttpStatus.GONE);
 
         }
 
 
-        return new ResponseEntity(bookList.get(id),HttpStatus.NOT_FOUND);
+        return new ResponseEntity(bookList.get(id).getName(),HttpStatus.NOT_FOUND);
     }
 
 
